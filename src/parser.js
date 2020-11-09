@@ -254,7 +254,7 @@ module.exports = {
         m = m.concat(toMarkdown(memberdef.type), ' ');
         m = m.concat(memberdef.$.explicit  == 'yes' ? ['explicit', ' '] : []);
         // m = m.concat(memberdef.name[0]._);
-        m = m.concat(markdown.refLink(member.name, member.refid));
+        m = m.concat([member.kind, ' ', markdown.refLink(member.name, member.name.toLowerCase())]);
         m = m.concat('(');
         if (memberdef.param) {
           memberdef.param.forEach(function (param, argn) {
@@ -277,14 +277,14 @@ module.exports = {
         m = m.concat(memberdef.$.mutable == 'yes' ? ['mutable', ' '] : []);
         m = m.concat(toMarkdown(memberdef.type), ' ');
         // m = m.concat(memberdef.name[0]._);
-        m = m.concat(markdown.refLink(member.name, member.refid));
+        m = m.concat([member.kind, ' ', markdown.refLink(member.name, member.name.toLowerCase())]);
         break;
 
       case 'property':
         m = m.concat(['{', member.kind, '} ']);
         m = m.concat(toMarkdown(memberdef.type), ' ');
         // m = m.concat(memberdef.name[0]._);
-        m = m.concat(markdown.refLink(member.name, member.refid));
+        m = m.concat([member.kind, ' ', markdown.refLink(member.name, member.name.toLowerCase())]);
         break;
 
       case 'enum':
@@ -300,12 +300,12 @@ module.exports = {
           });
         }
         // m.push(member.kind + ' ' + member.name);
-        m = m.concat([member.kind, ' ', markdown.refLink(member.name, member.refid)]);
+        m = m.concat([member.kind, ' ', markdown.refLink(member.name, member.name.toLowerCase())]);
         break;
 
       default:
         // m.push(member.kind + ' ' + member.name);
-        m = m.concat([member.kind, ' ', markdown.refLink(member.name, member.refid)]);
+        m = m.concat([member.kind, ' ', markdown.refLink(member.name, member.name.toLowerCase())]);
         break;
     }
 

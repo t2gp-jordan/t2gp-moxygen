@@ -86,7 +86,14 @@ module.exports = {
         var dest = this.findParent(ref, ['namespace', 'class', 'struct']);
         if (!dest || compound.refid == dest.refid)
           return '#' + refid;
-        return this.compoundPath(dest, options) + '#' + refid;
+        return (
+          this.compoundPath(dest, {
+            ...options,
+            ...{ output: `./%s` },
+          }) +
+          "#" +
+          refid
+        );
       } else {
         if (compound.kind == 'page')
           return this.compoundPath(compound.parent, options) + '#' + refid;
