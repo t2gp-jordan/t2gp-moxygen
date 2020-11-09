@@ -32,6 +32,7 @@
 {{/each}}
 
 {{#each filtered.members}}
+### {{title name}}
 #### {{title proto}} {{anchor refid}}
 
 {{#if enumvalue}}
